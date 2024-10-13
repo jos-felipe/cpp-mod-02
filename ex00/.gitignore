@@ -5,10 +5,8 @@
 !Makefile
 
 include/*
-!include/Zombie.hpp
+!include/Fixed.hpp
 
 src/*
+!src/Fixed.cpp
 !src/main.cpp
-!src/newZombie.cpp
-!src/randomChump.cpp
-!src/Zombie.cpp
