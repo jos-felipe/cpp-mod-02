@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Fixed.hpp                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tmina-ni <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: josfelip <josfelip@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/22 10:27:36 by tmina-ni          #+#    #+#             */
-/*   Updated: 2024/08/22 14:14:08 by tmina-ni         ###   ########.fr       */
+/*   Updated: 2024/10/13 20:27:45 by josfelip         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,12 +24,12 @@ public:
 
 	Fixed&	operator=(Fixed const& rhs); //Copy assignment - updates current instance
 
-	int	getRawBits(void) const;
+	int		getRawBits(void) const;
 	void	setRawBits(int const raw);
 
 private:
-	int	_rawValue;
-	static const int	_FRACTIONAL_BITS = 8;	
+	int					_rawValue;
+	static const int	_FRACTIONAL_BITS = 8;
 };
 
 #endif
