@@ -1,0 +1,16 @@
+/*
+!include
+!src
+!.gitignore
+!Makefile
+
+include/*
+!include/HumanA.hpp
+!include/HumanB.hpp
+!include/Weapon.hpp
+
+src/*
+!src/HumanA.cpp
+!src/HumanB.cpp
+!src/main.cpp
+!src/Weapon.cpp

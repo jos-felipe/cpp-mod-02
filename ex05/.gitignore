@@ -1,0 +1,12 @@
+/*
+!.gitignore
+!Makefile
+!include
+!src
+
+include/*
+!include/Harl.hpp
+
+src/*
+!src/Harl.cpp
+!src/main.cpp

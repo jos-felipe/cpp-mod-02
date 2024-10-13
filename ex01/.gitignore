@@ -1,0 +1,13 @@
+/*
+!src
+!include
+!.gitignore
+!Makefile
+
+include/*
+!include/Zombie.hpp
+
+src/*
+!src/main.cpp
+!src/Zombie.cpp
+!src/zombieHord.cpp
