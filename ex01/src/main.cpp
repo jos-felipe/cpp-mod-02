@@ -3,33 +3,33 @@
 /*                                                        :::      ::::::::   */
 /*   main.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: josfelip <josfelip@student.42sp.org.br>    +#+  +:+       +#+        */
+/*   By: tmina-ni <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/08/01 22:26:19 by tmina-ni          #+#    #+#             */
-/*   Updated: 2024/10/01 13:45:33 by josfelip         ###   ########.fr       */
+/*   Created: 2024/08/22 10:21:59 by tmina-ni          #+#    #+#             */
+/*   Updated: 2024/08/23 00:37:25 by tmina-ni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "Zombie.hpp"
+#include "Fixed.hpp"
 
-int	main(void) {
-	int	N;
-	int	i;
+int	main(void)
+{
+	Fixed a;
+	Fixed const b( 10 );
+	Fixed const c( 42.42f );
+	Fixed const d( b );
 
-	std::cout << "TEST 1. Lonely horde" << std::endl;
-	N = 1;
-	Zombie	*lonely_horde = zombieHorde(N, "Gru");
-	for (i = 0; i < N; i++)
-		lonely_horde[i].announce();
-	delete [] lonely_horde;
-	std::cout << std::endl;
+	a = Fixed( 1234.4321f );
 
-	std::cout << "TEST 2. Army horde" << std::endl;
-	N = 10;
-	Zombie	*army_horde = zombieHorde(N, "Minion");
-	for (i = 0; i < N; i++)
-		army_horde[i].announce();
-	delete [] army_horde;
+	std::cout << "a is " << a << std::endl;
+	std::cout << "b is " << b << std::endl;
+	std::cout << "c is " << c << std::endl;
+	std::cout << "d is " << d << std::endl;
 
-	return (0);
+	std::cout << "a is " << a.toInt() << " as integer" << std::endl;
+	std::cout << "b is " << b.toInt() << " as integer" << std::endl;
+	std::cout << "c is " << c.toInt() << " as integer" << std::endl;
+	std::cout << "d is " << d.toInt() << " as integer" << std::endl;
+
+	return 0;
 }
