@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Fixed.hpp                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tmina-ni <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: josfelip <josfelip@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/22 10:27:36 by tmina-ni          #+#    #+#             */
-/*   Updated: 2024/08/23 15:47:24 by tmina-ni         ###   ########.fr       */
+/*   Updated: 2024/10/16 13:25:06 by josfelip         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,6 @@
 # define FIXED_HPP
 
 #include <iostream>
-#include <cmath>
 
 class	Fixed {
 
@@ -27,14 +26,18 @@ public:
 
 	Fixed&	operator=(Fixed const& rhs); //Copy assignment - updates current instance
 
-	int	getRawBits(void) const;
+	//Getters and setters
+	int		getRawBits(void) const;
 	void	setRawBits(int const raw);
-	int	toInt(void) const;
+	
+	//Conversion functions
 	float	toFloat(void) const;
+	int		toInt(void) const;
 
 private:
-	int	_rawValue;
-	static const int	_FRACTIONAL_BITS = 8;	
+	int					_rawValue;
+	static const int	_FRACTIONAL_BITS = 8;
+	static const int	_SCALE = 256; // 2^8
 };
 
 std::ostream&	operator<<(std::ostream& o, Fixed const& rhs);
