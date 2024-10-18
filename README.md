@@ -1,4 +1,4 @@
-# C++ - Module 01
+# C++ - Module 02
 
 ## Overview
 
