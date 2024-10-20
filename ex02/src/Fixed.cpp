@@ -6,7 +6,7 @@
 /*   By: josfelip <josfelip@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/22 10:26:59 by tmina-ni          #+#    #+#             */
-/*   Updated: 2024/10/19 21:45:15 by josfelip         ###   ########.fr       */
+/*   Updated: 2024/10/19 21:54:40 by josfelip         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,75 +48,75 @@ Fixed&			Fixed::operator=(Fixed const& rhs)
 }
 
 // Arithmetic operators
-Fixed			Fixed::operator+(Fixed const& rhs) const {
+Fixed	Fixed::operator+(Fixed const& rhs) const {
 	Fixed result;
 	result.setRawBits(this->getRawBits() + rhs.getRawBits());
 	return result;
 }
 
-Fixed			Fixed::operator-(Fixed const& rhs) const {
+Fixed	Fixed::operator-(Fixed const& rhs) const {
 	Fixed result;
 	result.setRawBits(this->getRawBits() - rhs.getRawBits());
 	return result;
 }
 
-Fixed			Fixed::operator*(Fixed const& rhs) const {
+Fixed	Fixed::operator*(Fixed const& rhs) const {
 	Fixed result;
 	result.setRawBits((this->getRawBits() * rhs.getRawBits()) >> _FRACTIONAL_BITS);
 	return result;
 }
 
-Fixed			Fixed::operator/(Fixed const& rhs) const {
+Fixed	Fixed::operator/(Fixed const& rhs) const {
 	Fixed result;
 	result.setRawBits((this->getRawBits() << _FRACTIONAL_BITS) / rhs.getRawBits());
 	return result;
 }
 
 // Increment and decrement operators
-Fixed&			Fixed::operator++(void) {
+Fixed&	Fixed::operator++(void) {
 	this->_rawValue++;
 	return *this;
 }
 
-Fixed			Fixed::operator++(int) {
+Fixed	Fixed::operator++(int) {
 	Fixed tmp(*this);
 	operator++();
 	return tmp;
 }
 
-Fixed&			Fixed::operator--(void) {
+Fixed&	Fixed::operator--(void) {
 	this->_rawValue--;
 	return *this;
 }
 
-Fixed			Fixed::operator--(int) {
+Fixed	Fixed::operator--(int) {
 	Fixed tmp(*this);
 	operator--();
 	return tmp;
 }
 
 // Comparison operators
-bool			Fixed::operator>(Fixed const& rhs) const {
+bool	Fixed::operator>(Fixed const& rhs) const {
 	return this->getRawBits() > rhs.getRawBits();
 }
 
-bool			Fixed::operator<(Fixed const& rhs) const {
+bool	Fixed::operator<(Fixed const& rhs) const {
 	return this->getRawBits() < rhs.getRawBits();
 }
 
-bool			Fixed::operator>=(Fixed const& rhs) const {
+bool	Fixed::operator>=(Fixed const& rhs) const {
 	return this->getRawBits() >= rhs.getRawBits();
 }
 
-bool			Fixed::operator<=(Fixed const& rhs) const {
+bool	Fixed::operator<=(Fixed const& rhs) const {
 	return this->getRawBits() <= rhs.getRawBits();
 }
 
-bool			Fixed::operator==(Fixed const& rhs) const {
+bool	Fixed::operator==(Fixed const& rhs) const {
 	return this->getRawBits() == rhs.getRawBits();
 }
 
-bool			Fixed::operator!=(Fixed const& rhs) const {
+bool	Fixed::operator!=(Fixed const& rhs) const {
 	return this->getRawBits() != rhs.getRawBits();
 }
 
@@ -148,3 +148,23 @@ int		Fixed::toInt(void) const {
 float	Fixed::toFloat(void) const {
 	return (static_cast<float>(this->getRawBits()) / _SCALE);
 }
+
+//=================================STATIC FUNCTIONS===========================//
+
+Fixed&	Fixed::min(Fixed& a, Fixed& b) {
+	return (a < b) ? a : b;
+}
+
+Fixed&	Fixed::max(Fixed& a, Fixed& b) {
+	return (a > b) ? a : b;
+}
+
+Fixed const&	Fixed::min(Fixed const& a, Fixed const& b) {
+	return (a < b) ? a : b;
+}
+
+Fixed const&	Fixed::max(Fixed const& a, Fixed const& b) {
+	return (a > b) ? a : b;
+}
+
+

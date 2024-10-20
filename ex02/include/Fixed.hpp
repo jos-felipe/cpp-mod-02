@@ -6,7 +6,7 @@
 /*   By: josfelip <josfelip@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/22 10:27:36 by tmina-ni          #+#    #+#             */
-/*   Updated: 2024/10/19 21:31:46 by josfelip         ###   ########.fr       */
+/*   Updated: 2024/10/19 21:51:45 by josfelip         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,6 +51,12 @@ public:
 	//Conversion functions
 	float	toFloat(void) const;
 	int		toInt(void) const;
+
+	// Static functions
+	static Fixed&	min(Fixed& a, Fixed& b);
+	static Fixed&	max(Fixed& a, Fixed& b);
+	static Fixed const&	min(Fixed const& a, Fixed const& b);
+	static Fixed const&	max(Fixed const& a, Fixed const& b);
 
 private:
 	int					_rawValue;
