@@ -6,7 +6,7 @@
 /*   By: josfelip <josfelip@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/22 10:27:36 by tmina-ni          #+#    #+#             */
-/*   Updated: 2024/10/16 13:25:06 by josfelip         ###   ########.fr       */
+/*   Updated: 2024/10/19 21:25:30 by josfelip         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,22 @@ public:
 	Fixed(Fixed const& src); //Copy constructor - creates new instance
 	~Fixed(void); //Destructor
 
+	// Operators overloads
 	Fixed&	operator=(Fixed const& rhs); //Copy assignment - updates current instance
+	Fixed	operator+(Fixed const& rhs) const;
+	Fixed	operator-(Fixed const& rhs) const;
+	Fixed	operator*(Fixed const& rhs) const;
+	Fixed	operator/(Fixed const& rhs) const;
+	Fixed&	operator++(void); //Pre-increment
+	Fixed	operator++(int); //Post-increment
+	Fixed&	operator--(void); //Pre-decrement
+	Fixed	operator--(int); //Post-decrement
+	bool	operator>(Fixed const& rhs) const;
+	bool	operator<(Fixed const& rhs) const;
+	bool	operator>=(Fixed const& rhs) const;
+	bool	operator<=(Fixed const& rhs) const;
+	bool	operator==(Fixed const& rhs) const;
+	bool	operator!=(Fixed const& rhs) const;
 
 	//Getters and setters
 	int		getRawBits(void) const;
