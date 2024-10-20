@@ -6,7 +6,10 @@
 
 include/*
 !include/Fixed.hpp
+!include/Point.hpp
 
 src/*
 !src/Fixed.cpp
 !src/main.cpp
+!src/Point.cpp
+!src/bsp.cpp
