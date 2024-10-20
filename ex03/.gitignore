@@ -1,0 +1,12 @@
+/*
+!src
+!include
+!.gitignore
+!Makefile
+
+include/*
+!include/Fixed.hpp
+
+src/*
+!src/Fixed.cpp
+!src/main.cpp
