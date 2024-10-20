@@ -1,4 +1,12 @@
 /*
+!src
+!include
 !.gitignore
 !Makefile
-!main.cpp
+
+include/*
+!include/Fixed.hpp
+
+src/*
+!src/Fixed.cpp
+!src/main.cpp

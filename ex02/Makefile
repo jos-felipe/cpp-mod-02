@@ -2,22 +2,32 @@
 
 CC = c++
 CFLAGS = -Wall -Wextra -Werror -std=c++98
+INCLUDE = -I $(HEADER_PATH)
+
+#================================PATHS=========================================#
+
+SRC_PATH = ./src
+HEADER_PATH = ./include
 
 #================================FILES=========================================#
 
-NAME = where_is_brain
-SRC = main.cpp 
+NAME = fixed
+SRC = $(wildcard $(SRC_PATH)/*.cpp)
 OBJ = $(SRC:.cpp=.o)
+HEADER = $(wildcard $(HEADER_PATH)/*.hpp)
 
 #================================RULES=========================================#
 
 all: $(NAME)
 
-$(NAME): $(OBJ)
+$(NAME): $(OBJ) $(HEADER)
 	$(CC) $(CFLAGS) $(OBJ) -o $(NAME)
 
-%.o: %.cpp
-	$(CC) $(CFLAGS) -c $< -o $@
+$(SRC_PATH)/%.o: $(SRC_PATH)/%.cpp $(HEADER)
+	$(CC) $(CFLAGS) $(INCLUDE) -c $< -o $@
+
+run: all
+	./$(NAME)
 
 leak: all
 	valgrind --leak-check=full --show-leak-kinds=all ./$(NAME)
@@ -32,4 +42,4 @@ fclean: clean
 
 re: fclean all
 
-.PHONY: all clean fclean re leak
+.PHONY: all clean fclean re run leak
