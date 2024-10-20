@@ -6,7 +6,7 @@
 /*   By: josfelip <josfelip@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/22 10:26:59 by tmina-ni          #+#    #+#             */
-/*   Updated: 2024/10/16 13:22:13 by josfelip         ###   ########.fr       */
+/*   Updated: 2024/10/19 21:45:15 by josfelip         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,6 +46,81 @@ Fixed&			Fixed::operator=(Fixed const& rhs)
 		this->_rawValue = rhs.getRawBits();
 	return *this;
 }
+
+// Arithmetic operators
+Fixed			Fixed::operator+(Fixed const& rhs) const {
+	Fixed result;
+	result.setRawBits(this->getRawBits() + rhs.getRawBits());
+	return result;
+}
+
+Fixed			Fixed::operator-(Fixed const& rhs) const {
+	Fixed result;
+	result.setRawBits(this->getRawBits() - rhs.getRawBits());
+	return result;
+}
+
+Fixed			Fixed::operator*(Fixed const& rhs) const {
+	Fixed result;
+	result.setRawBits((this->getRawBits() * rhs.getRawBits()) >> _FRACTIONAL_BITS);
+	return result;
+}
+
+Fixed			Fixed::operator/(Fixed const& rhs) const {
+	Fixed result;
+	result.setRawBits((this->getRawBits() << _FRACTIONAL_BITS) / rhs.getRawBits());
+	return result;
+}
+
+// Increment and decrement operators
+Fixed&			Fixed::operator++(void) {
+	this->_rawValue++;
+	return *this;
+}
+
+Fixed			Fixed::operator++(int) {
+	Fixed tmp(*this);
+	operator++();
+	return tmp;
+}
+
+Fixed&			Fixed::operator--(void) {
+	this->_rawValue--;
+	return *this;
+}
+
+Fixed			Fixed::operator--(int) {
+	Fixed tmp(*this);
+	operator--();
+	return tmp;
+}
+
+// Comparison operators
+bool			Fixed::operator>(Fixed const& rhs) const {
+	return this->getRawBits() > rhs.getRawBits();
+}
+
+bool			Fixed::operator<(Fixed const& rhs) const {
+	return this->getRawBits() < rhs.getRawBits();
+}
+
+bool			Fixed::operator>=(Fixed const& rhs) const {
+	return this->getRawBits() >= rhs.getRawBits();
+}
+
+bool			Fixed::operator<=(Fixed const& rhs) const {
+	return this->getRawBits() <= rhs.getRawBits();
+}
+
+bool			Fixed::operator==(Fixed const& rhs) const {
+	return this->getRawBits() == rhs.getRawBits();
+}
+
+bool			Fixed::operator!=(Fixed const& rhs) const {
+	return this->getRawBits() != rhs.getRawBits();
+}
+
+//=================================STREAM OPERATOR============================//
 
 std::ostream&	operator<<(std::ostream& o, Fixed const& rhs) {
 	o << rhs.toFloat();

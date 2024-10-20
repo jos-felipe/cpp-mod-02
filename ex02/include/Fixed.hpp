@@ -6,7 +6,7 @@
 /*   By: josfelip <josfelip@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/22 10:27:36 by tmina-ni          #+#    #+#             */
-/*   Updated: 2024/10/19 21:25:30 by josfelip         ###   ########.fr       */
+/*   Updated: 2024/10/19 21:31:46 by josfelip         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,14 +26,17 @@ public:
 
 	// Operators overloads
 	Fixed&	operator=(Fixed const& rhs); //Copy assignment - updates current instance
+	// Arithmetic operators
 	Fixed	operator+(Fixed const& rhs) const;
 	Fixed	operator-(Fixed const& rhs) const;
 	Fixed	operator*(Fixed const& rhs) const;
 	Fixed	operator/(Fixed const& rhs) const;
+	// Increment and decrement operators
 	Fixed&	operator++(void); //Pre-increment
 	Fixed	operator++(int); //Post-increment
 	Fixed&	operator--(void); //Pre-decrement
 	Fixed	operator--(int); //Post-decrement
+	// Comparison operators
 	bool	operator>(Fixed const& rhs) const;
 	bool	operator<(Fixed const& rhs) const;
 	bool	operator>=(Fixed const& rhs) const;
