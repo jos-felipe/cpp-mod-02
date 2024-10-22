@@ -6,7 +6,7 @@
 /*   By: josfelip <josfelip@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/19 22:31:24 by josfelip          #+#    #+#             */
-/*   Updated: 2024/10/19 23:28:22 by josfelip         ###   ########.fr       */
+/*   Updated: 2024/10/21 22:36:02 by josfelip         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,3 +29,5 @@ private:
 	Fixed	_x;
 	Fixed	_y;
 };
+
+bool	bsp(Point const a, Point const b, Point const c, Point const point);

@@ -5,36 +5,33 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: josfelip <josfelip@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/10/19 23:50:04 by josfelip          #+#    #+#             */
-/*   Updated: 2024/10/19 23:50:07 by josfelip         ###   ########.fr       */
+/*   Created: 2024/08/26 12:25:13 by tmina-ni          #+#    #+#             */
+/*   Updated: 2024/10/21 22:31:53 by josfelip         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Point.hpp"
-#include "Fixed.hpp"
 
-// Function to calculate the signed area of a triangle
-Fixed signedArea(Point const& p1, Point const& p2, Point const& p3) {
-    return (p1.getX() * (p2.getY() - p3.getY()) + 
-            p2.getX() * (p3.getY() - p1.getY()) + 
-            p3.getX() * (p1.getY() - p2.getY())) / Fixed(2);
+// Determinant formula:
+// area = abs 0.5 |(x1 - y2) (x1 - x3)|
+//                |(y1 - y2) (y1 - y3)|
+Fixed	calcArea(Point const a, Point const b, Point const c)
+{
+	Fixed	area = ((a.getX() - b.getX()) * (a.getY() - c.getY()) -
+			(a.getY() - b.getY()) * (a.getX() - c.getX())) / Fixed(2); 
+	if (area < 0)
+		area = area * Fixed(-1); 
+	return area;
 }
 
-bool bsp(Point const a, Point const b, Point const c, Point const point) {
-    // Calculate the signed areas
-    Fixed area_abc = signedArea(a, b, c);
-    Fixed area_pbc = signedArea(point, b, c);
-    Fixed area_apc = signedArea(a, point, c);
-    Fixed area_abp = signedArea(a, b, point);
+bool	bsp(Point const a, Point const b, Point const c, Point const point)
+{
+	Fixed	totalArea = calcArea(a, b, c);
+	Fixed	subArea1 = calcArea(point, b, c);
+	Fixed	subArea2 = calcArea(a, point, c);
+	Fixed	subArea3 = calcArea(a, b, point);
 
-    // Check if all areas have the same sign and sum up to the total area
-    bool all_positive = (area_abc > 0 && area_pbc > 0 && area_apc > 0 && area_abp > 0);
-    bool all_negative = (area_abc < 0 && area_pbc < 0 && area_apc < 0 && area_abp < 0);
-
-    if (all_positive || all_negative) {
-        Fixed sum = area_pbc + area_apc + area_abp;
-        return sum == area_abc && sum != 0;
-    }
-
-    return false;
+	if (subArea1 == Fixed(0) || subArea2 == Fixed(0) || subArea3 == Fixed(0))
+		return false;
+	return (subArea1 + subArea2 + subArea3 == totalArea);
 }
