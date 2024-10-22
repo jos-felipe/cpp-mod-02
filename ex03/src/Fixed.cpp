@@ -6,7 +6,7 @@
 /*   By: josfelip <josfelip@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/22 10:26:59 by tmina-ni          #+#    #+#             */
-/*   Updated: 2024/10/19 21:54:40 by josfelip         ###   ########.fr       */
+/*   Updated: 2024/10/21 22:42:46 by josfelip         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,33 +15,23 @@
 
 //================================CONSTRUCTORS================================//
 
-Fixed::Fixed(void) : _rawValue(0) {
-	std::cout << "Default constructor called" << std::endl;
-}
+Fixed::Fixed(void) : _rawValue(0) {}
 
-Fixed::Fixed(int const num) : _rawValue(num << _FRACTIONAL_BITS) {
-	std::cout << "Int constructor called" << std::endl;
-}
+Fixed::Fixed(int const num) : _rawValue(num << _FRACTIONAL_BITS) {}
 
 Fixed::Fixed(float const num) {
-	std::cout << "Float constructor called" << std::endl;
 	_rawValue = static_cast<int>(roundf(num * _SCALE));
 }
 
 Fixed::Fixed(Fixed const& src) {
-	std::cout << "Copy constructor called" << std::endl;
-	*this = src;
-}
+	*this = src;}
 
-Fixed::~Fixed(void) {
-	std::cout << "Destructor called" << std::endl;
-}
+Fixed::~Fixed(void) {}
 
 //=================================OPERATORS==================================//
 
-Fixed&			Fixed::operator=(Fixed const& rhs)
+Fixed&	Fixed::operator=(Fixed const& rhs)
 {
-	std::cout << "Copy assignment operator called" << std::endl;
 	if (this != &rhs)
 		this->_rawValue = rhs.getRawBits();
 	return *this;
