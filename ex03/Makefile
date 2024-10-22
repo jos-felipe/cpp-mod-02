@@ -11,7 +11,7 @@ HEADER_PATH = ./include
 
 #================================FILES=========================================#
 
-NAME = fixed
+NAME = bsp
 SRC = $(wildcard $(SRC_PATH)/*.cpp)
 OBJ = $(SRC:.cpp=.o)
 HEADER = $(wildcard $(HEADER_PATH)/*.hpp)

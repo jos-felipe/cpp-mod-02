@@ -1,116 +1,93 @@
-# C++ - Module 02
+# CPP Module 02 - Fixed Point Numbers & BSP
+
+This repository contains my implementation of the CPP Module 02 exercises from the 42 school curriculum.
 
 ## Overview
+This module focuses on operator overloading and fixed-point arithmetic in C++. Through these exercises, I implemented a fixed-point number class and used it to create a point-in-triangle checker using Binary Space Partitioning (BSP).
 
-**C++ - Module 01** is part of the 42 school's C++ curriculum, designed to introduce key concepts of memory management, references, dynamic object handling, and basic file manipulation. Through a series of exercises, you will practice essential programming skills like working with objects, handling memory, and managing strings.
+## Implementation Details
 
-## Learning Objectives
+### Fixed Point Number Class
+- Implemented a fixed-point number system using a 32-bit integer with 8 bits for the fractional part
+- Overloaded arithmetic operators (+, -, *, /) with proper rounding
+- Implemented comparison operators (<, >, <=, >=, ==, !=)
+- Added conversion functions between fixed-point and floating-point numbers
 
-In this module, you will:
+Key design choices:
+```cpp
+class Fixed {
+private:
+    int               _rawValue;
+    static const int  _FRACTIONAL_BITS = 8;
+};
+```
 
-- Learn to manage memory dynamically using **pointers** and the **heap**.
-- Understand the use of **references** and **pointers** in object manipulation.
-- Practice reading from and writing to files, and perform simple **string replacement** operations.
-- Gain experience in handling **objects** and **dynamic memory** in C++.
-- Implement **simple classes** and apply basic object-oriented principles.
+### Point Class
+- Uses two Fixed numbers to represent x and y coordinates
+- Implements getters for coordinates
+- Follows Orthodox Canonical Form
 
-## Project Structure
+### BSP (Binary Space Partitioning)
+- Uses the area method to determine if a point lies inside a triangle
+- Handles edge cases (points on vertices or edges)
+- Ensures accurate results with fixed-point arithmetic
 
-### Exercise 00: BraiiiiiiinnnzzzZ
+## Building and Testing
 
-In this exercise, you will create a `Zombie` class. The goal is to allocate and deallocate zombie objects dynamically:
+### Requirements
+- C++ compiler with C++98 support
+- Make
 
-- Implement a **Zombie class** with a member function to announce itself.
-- Write two functions: `newZombie()` which allocates memory dynamically for a zombie, and `randomChump()` which creates a zombie on the stack.
-- Practice the basics of object creation and destruction in C++.
+### Build
+```bash
+make        # Build the exercise
+make clean  # Remove object files
+make fclean # Remove object files and executables
+make re     # Rebuild all
+make run     # Build and run the test
+```
 
-### Exercise 01: Moar brainz!
+### Running Tests
+Each exercise comes with a main program demonstrating its functionality:
+```bash
+./fixed      # Tests fixed-point number class
+./bsp        # Tests point-in-triangle checking
+```
 
-This exercise expands on the zombie concept by exploring **dynamic memory allocation** and **pointers**:
+## Key Learnings
+1. Understanding fixed-point arithmetic and its implementation
+2. Proper operator overloading in C++
+3. Working with Orthodox Canonical Form
+4. Implementing geometric algorithms with fixed-point precision
+5. Handling edge cases in floating-point alternatives
 
-- You will create a function that generates a **horde of zombies**, using dynamic memory allocation.
-- Handle the cleanup of dynamically allocated objects to avoid memory leaks.
+## Exercise Structure
 
-### Exercise 02: HI THIS IS BRAIN
+### ex00: Orthodox Canonical Fixed Point Class
+- Basic fixed-point number implementation
+- Orthodox Canonical Form compliance
 
-In this exercise, you will:
+### ex01: Advanced Fixed Point Operations
+- Conversion constructors
+- Basic arithmetic operations
+- Comparison operations
 
-- Work with **references** and **pointers** to practice manipulating variables directly in memory.
-- Create a program that prints the memory addresses and values of a **string**, using both references and pointers.
-- Understand the relationship between **references**, **pointers**, and memory addresses.
+### ex02: Static Member Functions
+- Min/max functionality
+- Advanced operator overloading
 
-### Exercise 03: Unnecessary violence
+### ex03: BSP Implementation
+- Point class implementation
+- Triangle point-inclusion algorithm
+- Geometric calculations using fixed-point arithmetic
 
-This exercise focuses on using **pointers to functions** and **object-oriented design**:
+## Notes
+- All classes follow Orthodox Canonical Form
+- No memory leaks in any implementation
+- Compliant with C++98 standard
+- Passes all 42 tests
 
-- Create a class `Weapon` and a class `HumanA` and `HumanB`.
-- `HumanA` uses a weapon passed by reference, while `HumanB` has a pointer to the weapon.
-- Understand the importance of managing object references and pointers in classes.
-
-### Exercise 04: Sed is for losers
-
-In this exercise, you will manipulate files and strings to implement a **simple text replacement program**:
-
-- Write a program that opens a file, reads its content, and replaces all occurrences of a **given string** with another string.
-- Practice **file handling** and **string manipulation** in C++.
-- The program must not modify the original file but create a new one with the changes.
-
-### Exercise 05: Harl 2.0
-
-In this final exercise, you will:
-
-- Implement a `Harl` class with a **logging mechanism** that reacts to four different log levels (`DEBUG`, `INFO`, `WARNING`, `ERROR`).
-- Use **function pointers** to map each log level to a corresponding function.
-- This will give you a deeper understanding of how **function pointers** work in C++ and how to implement dynamic behavior based on conditions.
-
-## Key Concepts
-
-### 1. **Dynamic Memory Management**
-   - In exercises 00 and 01, you will practice allocating and freeing memory dynamically using `new` and `delete` to avoid memory leaks.
-
-### 2. **References and Pointers**
-   - Exercise 02 emphasizes the use of references and pointers, which are fundamental to efficient memory management in C++.
-
-### 3. **File Handling and String Manipulation**
-   - Exercise 04 focuses on working with file streams in C++ (`ifstream`, `ofstream`) and performing string operations, giving you practical experience with real-world programming tasks.
-
-### 4. **Function Pointers**
-   - Exercise 03 and 05 introduce the concept of function pointers, which allows you to map specific functions to different cases and react dynamically to input.
-
-### 5. **Object-Oriented Programming (OOP)**
-   - Throughout the exercises, you will practice fundamental OOP principles such as **encapsulation** and **interaction between objects** through member functions and constructors.
-
-## How to Run
-
-1. **Clone the repository:**
-   ```bash
-   git clone https://github.com/your-username/CPP-Module-01.git
-   cd CPP-Module-01
-   ```
-
-2. **Compile the code:**
-   Each exercise has its own `Makefile`. Run the following command to compile the relevant exercise:
-   ```bash
-   make
-   ```
-
-3. **Run the executable:**
-   After compiling, you can run each exercise like so:
-   ```bash
-   ./ex00
-   ./ex01
-   ./ex02
-   ./ex03
-   ./ex04
-   ./ex05
-   ```
-
-## Requirements
-
-- **Language:** C++
-- **Compiler:** `clang++` or `g++`
-- The project must adhere to the **C++98** standard (or as specified in the project instructions).
-
-## Conclusion
-
-**C++ - Module 01** provides essential practice in **dynamic memory management**, **object-oriented programming**, and **file handling**. These exercises will help solidify your understanding of fundamental C++ concepts, preparing you for more advanced topics in later modules.
+## Resources Used
+- [Fixed-point arithmetic explained](https://en.wikipedia.org/wiki/Fixed-point_arithmetic)
+- [Point in Triangle test](https://en.wikipedia.org/wiki/Point_in_polygon)
+- C++ Reference for operator overloading
